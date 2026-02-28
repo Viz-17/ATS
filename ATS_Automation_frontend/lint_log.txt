@@ -1,0 +1,153 @@
+
+> frontend@0.0.0 lint
+> eslint .
+
+
+D:\Hackathons\hackcratev2\hackcrate-zerowatt\frontend\src\context\ThemeContext.jsx
+  32:17  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+D:\Hackathons\hackcratev2\hackcrate-zerowatt\frontend\src\pages\AdminDashboard.jsx
+   31:9   error    Error: Cannot access variable before it is declared
+
+`fetchAssessments` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  29 |             return;
+  30 |         }
+> 31 |         fetchAssessments();
+     |         ^^^^^^^^^^^^^^^^ `fetchAssessments` accessed before it is declared
+  32 |         if (activeTab === 'analytics') fetchAnalytics();
+  33 |     }, [activeTab]);
+  34 |
+
+  33 |     }, [activeTab]);
+  34 |
+> 35 |     const fetchAssessments = () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 36 |         fetch("http://localhost:8000/assessments")
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |             .then(res => res.json())
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |             .then(data => setSavedTests(data))
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 39 |             .catch(err => console.error(err));
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 40 |     };
+     | ^^^^^^^ `fetchAssessments` is declared here
+  41 |
+  42 |     const fetchAnalytics = () => {
+  43 |         fetch("http://localhost:8000/candidates")      react-hooks/immutability
+   32:40  error    Error: Cannot access variable before it is declared
+
+`fetchAnalytics` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  30 |         }
+  31 |         fetchAssessments();
+> 32 |         if (activeTab === 'analytics') fetchAnalytics();
+     |                                        ^^^^^^^^^^^^^^ `fetchAnalytics` accessed before it is declared
+  33 |     }, [activeTab]);
+  34 |
+  35 |     const fetchAssessments = () => {
+
+  40 |     };
+  41 |
+> 42 |     const fetchAnalytics = () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 43 |         fetch("http://localhost:8000/candidates")
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 44 |             .then(res => res.json())
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 45 |             .then(data => setCandidates(data))
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 46 |             .catch(err => console.error(err));
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 47 |     };
+     | ^^^^^^^ `fetchAnalytics` is declared here
+  48 |
+  49 |     // --- GENERATOR LOGIC ---
+  50 |     const handleGenerate = async () => {  react-hooks/immutability
+   33:8   warning  React Hook useEffect has a missing dependency: 'navigate'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/exhaustive-deps
+   62:18  error    'error' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  117:18  error    'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+
+D:\Hackathons\hackcratev2\hackcrate-zerowatt\frontend\src\pages\CandidateDashboard.jsx
+  11:11  error    'name' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     no-unused-vars
+  27:9   error    Error: Cannot access variable before it is declared
+
+`fetchStatus` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  25 |         window.addEventListener('popstate', handlePopState);
+  26 |
+> 27 |         fetchStatus();
+     |         ^^^^^^^^^^^ `fetchStatus` accessed before it is declared
+  28 |
+  29 |         return () => window.removeEventListener('popstate', handlePopState);
+  30 |     }, []);
+
+  30 |     }, []);
+  31 |
+> 32 |     const fetchStatus = () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |         fetch(`http://localhost:8000/candidate/status/${email}`)
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |             .then(res => res.json())
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 35 |             .then(data => {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 36 |                 setStatus(data);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |                 setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |             })
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 39 |             .catch(err => console.error(err));
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 40 |     };
+     | ^^^^^^^ `fetchStatus` is declared here
+  41 |
+  42 |     const handleStartTest = (type) => {
+  43 |         // type: 'psychometric', 'resume', 'jd'  react-hooks/immutability
+  30:8   warning  React Hook useEffect has missing dependencies: 'email', 'fetchStatus', and 'navigate'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react-hooks/exhaustive-deps
+
+D:\Hackathons\hackcratev2\hackcrate-zerowatt\frontend\src\pages\JobBoard.jsx
+  26:9  error    Error: Cannot access variable before it is declared
+
+`fetchJobs` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  24 |         window.addEventListener('popstate', handlePopState);
+  25 |
+> 26 |         fetchJobs();
+     |         ^^^^^^^^^ `fetchJobs` accessed before it is declared
+  27 |
+  28 |         return () => window.removeEventListener('popstate', handlePopState);
+  29 |     }, []);
+
+  29 |     }, []);
+  30 |
+> 31 |     const fetchJobs = () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 32 |         fetch("http://localhost:8000/assessments")
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 33 |             .then(res => res.json())
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 34 |             .then(data => {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 35 |                 setJobs(data);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 36 |                 setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |             })
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |             .catch(err => console.error(err));
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 39 |     };
+     | ^^^^^^^ `fetchJobs` is declared here
+  40 |
+  41 |     const handleApply = async (jobId, jobRole) => {
+  42 |         if (!window.confirm(`Start application for ${jobRole}? This will reset any progress on other applications.`)) return;  react-hooks/immutability
+  29:8  warning  React Hook useEffect has missing dependencies: 'candidateEmail' and 'navigate'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 react-hooks/exhaustive-deps
+
+D:\Hackathons\hackcratev2\hackcrate-zerowatt\frontend\src\pages\TestEnvironment.jsx
+  136:14  error  Parsing error: 'return' outside of function
+
+Γ£û 12 problems (9 errors, 3 warnings)
+
